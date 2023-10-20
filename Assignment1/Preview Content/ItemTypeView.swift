@@ -7,35 +7,40 @@
 
 import SwiftUI
 
-struct ItemType: Identifiable {
-    let id: String
-    let title: String
-}
-
 struct ItemTypeView: View {
     var body: some View {
         NavigationView {
-            List(ItemType.types) { itemType in
-                NavigationLink(destination: ItemView()) {
-                    HStack {
-                        Text(itemType.title)
-                    }
-                }
-            }
-            .navigationTitle("Item Types")
+            ItemTypesListView()
+                .navigationTitle("Item Types")
         }
     }
 }
 
-#Preview {
-    ItemTypeView()
+struct ItemTypesListView: View {
+    var body: some View {
+        List {
+            NavigationLink(destination: GamesListView()) {
+                Text("Games")
+            }
+            
+            NavigationLink(destination: GiftsListView()) {
+                Text("Gifts")
+            }
+            
+            NavigationLink(destination: MaterialsListView()) {
+                Text("Materials")
+            }
+            
+            NavigationLink(destination: BooksListView()) {
+                Text("Books")
+            }
+        }
+    }
 }
 
-extension ItemType {
-    static let types: [ItemType] = [
-        ItemType(id: "game", title: "Games"),
-        ItemType(id: "gift", title: "Gifts"),
-        ItemType(id: "material", title: "Materials"),
-        ItemType(id: "book", title: "Books")
-    ]
+struct ItemTypeView_Previews: PreviewProvider {
+    static var previews: some View {
+        ItemTypeView()
+    }
 }
+

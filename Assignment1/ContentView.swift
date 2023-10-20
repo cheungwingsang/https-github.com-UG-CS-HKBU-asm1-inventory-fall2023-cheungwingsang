@@ -8,19 +8,26 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var searchText = ""
+    @State private var searchResults: [SearchResult] = []
+
     var body: some View {
         TabView {
             ItemTypeView().tabItem {
-                Image(systemName: "multiply.circle.fill")
+                Image(systemName: "list.bullet.rectangle.fill")
                 Text("Item Types")
             }
-            SearchView().tabItem {
-                Image(systemName: "search.circle.fill")
+//            SearchBoxView(searchText: $searchText, searchResults: $searchResults).tabItem {
+//                Image(systemName: "magnifyingglass.circle.fill")
+//                Text("Search")
+//            }
+            SearchBarView().tabItem {
+                Image(systemName: "magnifyingglass.circle.fill")
                 Text("Search")
             }
             UserLoginView().tabItem {
-                Image(systemName: "login.circle.fill")
-                Text("User Login")
+                Image(systemName: "person.circle.fill")
+                Text("User")
             }
         }
     }
@@ -32,3 +39,6 @@ struct ContentView: View {
         }
     }
 }
+
+
+
