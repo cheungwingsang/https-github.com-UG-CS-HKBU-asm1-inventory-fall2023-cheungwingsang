@@ -67,7 +67,7 @@ struct ItemManagementView: View {
                     Spacer()
                     
                     Button(action: {
-                        loggedIn = true
+                        loggedIn = false
                     }) {
                         Text("Logout")
                             .font(.headline)
